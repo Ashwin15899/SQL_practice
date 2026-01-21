@@ -5,3 +5,4 @@
   select ENAME from EMP;
 
 3.WAQTD NAME AND SALARY GIVEN TO ALL THE EMPLOYEES.
+  select ename, sal from emp;
