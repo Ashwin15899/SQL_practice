@@ -35,4 +35,66 @@
   where job= 'manager' and deptno =20;
 
 8.WAQTD DETAILS OF EMPLOYEES WORKING IN DEPT 20 OR 30.
-  
+  SELECT * 
+  FROM emp 
+  where DEPTNO =20 OR DEPTNO=30;
+
+9.WAQTD DETAILS OF EMPLOYEES WORKING AS ANALYST IN DEPT 10.
+  select * 
+  from emp 
+  where job='analyst' and deptno=10;
+
+10.WAQTD DETAILS OF EMPLOYEE WORKING AS PRESIDENT WITH SALARY OF RUPEES 4000
+   select * 
+   from emp 
+   where job='president' and sal=4000;
+
+11.WAQTD NAMES AND DEPTNO, JOB OF EMPS WORKING AS CLERK IN DEPT 10 OR 20
+   select ename, job, deptno 
+   from emp 
+   where job = 'clerk' and (deptno=10 or deptno=20);   
+
+12.WAQTD DETAILS OF EMPLOYEES WORKING AS CLERK OR MANAGER IN DEPT 10.
+   select * 
+   from emp 
+   where deptno=10 and (job='manager' or job='clerk');
+
+13.WAQTD NAMES OF EMPLOYEES WORKING IN DEPT 10,20,30,40
+   select ename 
+   from emp 
+   where deptno=10 or deptno=20 or deptno=30 or deptno=40;
+
+14.WAQTD DETAILS OF EMPLOYEES WITH EMPNO 7902,7839.
+   select * 
+   from emp 
+   where empno=7902 or empno=7839;
+
+15.WAQTD DETAILS OF EMPLOYEES WORKING AS MANAGER OR SALESMAN OR CLERK
+   select * 
+   from emp 
+   where job='manager' or job='salesman' or job='clerk';
+
+16.WAQTD NAMES OF EMPLOYEES HIRED AFTER 81 AND BEFORE 87
+   select ename 
+   from emp 
+   where hiredate>'1981-12-31' and hiredate<'1987-01-01';
+
+17.WAQTD DETAILS OF EMPLOYEES EARNING MORE THAN 1250 BUT LESS THAN 3000
+   select * 
+   from emp 
+   where sal > 1250 and sal< 3000;
+
+18.WAQTD NAMES OF EMPLOYEES HIRED AFTER 81 INTO DЕРТ 10 OR 30
+   select ename 
+   from emp 
+   where hiredate>'1981-12-31' and (deptno=10 or deptno=30);
+
+19.WAQTD NAMES, ANNUAL SALARY OF THE EMPLOYEES WORKING AS MANAGER OR CLERK INTO DEPT 10 OR 30
+   SELECT ename, sal*12 AS Annual_salary 
+   from emp
+   where (job='manager' or job='CLERK') and (deptno=10 or deptno=30);
+
+20.WAQTD ALL THE DETAILS ALONG WITH ANNUAL SALARY IF SAL IS BETWEEN 1000 AND 4000 ANNUAL SALARY MORE THAN 15000
+   select *, sal*12 AS Annual_salary
+   from emp
+   where (sal>1000 and sal<4000) and (sal*12>15000);
