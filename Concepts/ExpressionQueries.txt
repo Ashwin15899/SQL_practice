@@ -5,3 +5,24 @@
   select ename, job, sal/2 as Half_term_salary from emp;
 
 3.WAQTD ALL THE DETAILS OF THE EMPLOYEES ALONG WITH AN ANNUALBONUS OF 2000.
+  select *,(sal*12)+2000 AS ANNUALBONUS FROM emp;
+
+4.WAQTD NAME SALARY AND SALARY WITH A HIKE OF 10%.
+  select ename, sal, sal+(sal*0.10) AS '10%_Hike' from emp;
+
+5.WAQTD NAME AND SALARY WITH DEDUCTION OF 25%.
+  select ename, sal-(sal*0.25) AS '25%_deduction' from emp;
+
+6.WAQTD NAME AND SALARY WITH MONTHLY HIKE OF 50.
+  select ename, sal+(sal*0.50) AS '50%_hike' from emp;
+
+7.WAQTD NAME AND ANNUAL SALARY WITH DEDUCTION OF 10%.
+  select ename, (sal*12)-((sal*12)*0.10) AS '10%_Dec_AnnSal' from emp;
+
+8.WAQTD TOTAL SALARY GIVEN TO EACH EMPLOYEE(SAL+COMM).
+
+9.WAQTD DETAILS OF ALL THE EMPLOYEES ALONG WITH ANNUAL SALARY.
+  select *, sal*12 as Annual_salary from emp;
+
+10.WAQTD NAME AND DESIGNATION ALONG WITH 100 PENALTY IN SALARҮ.
+   select ename, job, sal-100 AS 'Salary_with_100_Penalty' from emp;
