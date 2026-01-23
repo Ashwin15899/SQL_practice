@@ -47,3 +47,54 @@
     select *
     from emp
     where mgr is null and deptno in (10,30);
+
+11) LIST ALL THE SALESMEN IN DEPT 30 WITH SAL MORE THAN 2450
+    select *
+    from emp
+    where job='salesman' and deptno in (30) and sal>2450;
+
+12) LIST ALL THE ANALYST IN DEPT NUMBER 20 AND HAVING SALARY GREATER THAN 2500
+    select *
+    from emp
+    where job='analyst' and deptno in (20) and sal>2500;
+
+13) LIST ALL THE EMPLOYEES WHOSE NAME STARTS WITH 'M' OR 'J'
+    select *
+    from emp
+    where ename like 'M%' or ename like 'J%';
+
+14) LIST ALL THE EMPLOYEES WITH ANNUAL SALARY EXCEPT THOSE WHO ARE WORKING IN DEPT 30
+    SELECT *, SAL*12 AS Annual_salary 
+    from emp
+    where deptno not in (30);
+
+15) LIST THE EMPLOYEES WHOSE NAME DOES NOT END WITH 'ES' OR 'R'
+    select *
+    from emp
+    where ename not like '%ES' and ename not like '%R';
+
+16) LIST ALL THE EMPLOYEES WHO ARE HAVING REPORTING MANAGERS IN DEPT 10 ALONG WITH 10% HIKE IN SALARY
+    select *,sal*0.10 As '10%_Hike'
+    from emp
+    where mgr is not null and deptno in (10);
+
+17) DISPLAY ALL THE EMPLOYEE WHO ARE 'SALESMAN'S HAVING 'E' AS THE LAST BUT ONE CHARACTER IN ENAME BUT SALARY HAVING EXACTLY 4 CHARACTER
+    select * 
+    from emp
+    where job='salesman' and ename like '%E' and ename like '%E%' AND SAL>999;
+
+18) DISPLAY ALL THE EMPLOYEE WHO ARE JOINED AFTER YEAR 81
+    SELECT * 
+    FROM emp
+    where hiredate>'1981-12-31';
+
+19) DISPLAY ALL THE EMPLOYEE WHO ARE JOINED IN FEB
+    select * 
+    from emp
+    where hiredate like '%-02-%';
+
+20) LIST THE EMPLOYEES WHO ARE NOT WORKING AS MANAGERS AND CLERKS IN DEPT 10 AND 20 WITH A SALARY IN THE RANGE OF 1000 TO 3000.
+    select * 
+    from emp
+    where job not in ('manager','clerk') and deptno in (10,20) and sal between 1000 and 3000;
+
