@@ -1,0 +1,69 @@
+1.WAQTD NUMBER OF EMPLOYEES GETTING SALARY LESS THAN 2000 IN DEPTNO 10
+  select count(*)
+  from emp
+  where sal<2000 and deptno in 10;
+
+2.WAQTD TOTAL SALARY NEEDED TO PAY EMPLOYEES WORKING AS CLERK
+  select sum(sal) as 'Total salary'
+  from emp
+  where job = 'clerk';  
+
+3.WAQTD AVERAGE SALARY NEEDED TO PAY ALL EMPLOYEES
+  select avg(sal) as Average_salary from emp;
+
+4.WAQTD NUMBER OF EMPLOYEES HAVING 'A' AS THEIR FIRST CHARACTER
+  select count(*) 'A starting employees'
+  from emp
+  where ename like 'A%';
+
+5.WAQTD NUMBER OF EMPLOYEES WORKING AS CLERK OR MANAGER
+  select count(*) as 'Manager/Clerk'
+  from emp
+  where job in ('MANAGER','CLERK');
+
+6.WAQTD TOTAL SALARY NEEDED TO PAY EMPLOYEES HIRED IN FEB
+  SELECT sum(sal) AS 'Paying feb employees'
+  from emp
+  where hiredate like '%-02-%';
+
+7.WAQTD NUMBER OF EMPLOYEES REPORTING TO 7839 (MGR)
+  select count(*) AS 'Reporting_To_7839'
+  from emp
+  where mgr=7839;
+
+8.WAQTD NUMBER OF EMPLOYEES GETTING COMISSION IN DEPTNO 30
+  SELECT COUNT(*) AS 'Getting_commission_in_dept30'
+  FROM emp
+  WHERE comm is not null and deptno=30;
+
+9.WAQTD AVG SAL, TOTAL SAL, NUMBER OF EMPS AND MAXIMUM SALARY GIVEN TO EMPLOYEES WORKING AS PRESIDENT
+  select 
+        avg(sal) as 'Average Salary', 
+        sum(sal) as 'Total Salary', 
+        count(empno) as 'No.of Presidents',
+        max(sal) as 'Maximum salary'
+  from emp
+  where job='president';
+
+10.WAQTD NUMBER OF EMPLOYEES HAVING 'A' IN THEIR NAMES
+   select count(*) AS 'No.of_employees having A'
+   from emp
+   where ename like '%A%'
+
+11.WAQTD NUMBER OF EMPS AND TOTAL SALARY NEEDED TO PAY THE EMPLOYEES WHO HAVE 2 CONSICUTIVE L's IN THEIR NAMES
+   select count(*) as 'No.of.employees', sum(sal) as 'Total salary'
+   from emp
+   where ename like '%LL%';
+
+12.WAQTD NUMBER OF DEPARTMENTS PRESENT IN EMPLOYEE TABLE 
+   select DISTINCT count(*) as 'No.of.departments'
+   from emp
+   where deptno is not null;
+
+13.WAQTD NUMBER OF EMPLOYEES HAVING CHARACTER 'Z' IN THEIR NAMES
+   select count(*) as 'Names having Z'
+   from emp
+   where ename like '%Z%';
+
+14.WAQTD NUMBER OF EMPLOYEES HAVING '$' IN THEIR NAMES.
+   
