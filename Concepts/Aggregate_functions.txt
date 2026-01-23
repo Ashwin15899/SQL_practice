@@ -56,9 +56,9 @@
    where ename like '%LL%';
 
 12.WAQTD NUMBER OF DEPARTMENTS PRESENT IN EMPLOYEE TABLE 
-   select DISTINCT count(*) as 'No.of.departments'
-   from emp
-   where deptno is not null;
+   SELECT COUNT(DISTINCT DEPTNO) AS "No.of.departments"
+   FROM EMP
+   WHERE DEPTNO IS NOT NULL;
 
 13.WAQTD NUMBER OF EMPLOYEES HAVING CHARACTER 'Z' IN THEIR NAMES
    select count(*) as 'Names having Z'
@@ -66,4 +66,6 @@
    where ename like '%Z%';
 
 14.WAQTD NUMBER OF EMPLOYEES HAVING '$' IN THEIR NAMES.
-   
+   select count(*) AS 'No.of_employees having A'
+   from EMP
+   where ename like '%$%'
