@@ -50,3 +50,6 @@
   group by deptno;
 
 10.WAQTD NUMBER OF TIMES THE SALARIES PRESENT IN EMPLOYEE TABLE.
+   select count(sal) as 'No of times present', sal
+   from emp
+   group by sal;
