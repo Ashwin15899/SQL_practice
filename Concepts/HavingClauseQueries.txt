@@ -13,3 +13,41 @@
   group by job
   having sum(sal)>3800;
 
+4.WAQTD DEPTNO AND NUMBER OF EMP WORKING ONLY IF THERE ARE 2 EMP WORKING IN EACH DEPT AS MANAGER.
+
+5.WAQTD JOB AND MAX SAL OF EMP IN EACH JOB IF THE MAX SAL EXCEEDS 2600
+  select job, max(sal) as 'Maximum salary'
+  from emp
+  group by job
+  having max(sal)>2600;
+
+6.WAQTD THE SALARIES WHICH ARE REPEATED IN EMP TABLE
+  select sal, count(sal) as 'Times repeated'
+  from emp
+  group by sal
+  having count(sal)>1;
+
+7.WAQTD THE HIREDATE WHICH ARE DUPLICATED IN EMP TABLE
+  select hiredate, count(hiredate) as 'Times repeated'
+  from emp
+  group by hiredate
+  having count(hiredate)>1;
+
+8.WAQTD AVG SALARY OF EACH DEPT IF AVG SAL IS LESS THAN 3000
+  select deptno, avg(sal) as 'Average salary'
+  from emp
+  group by deptno
+  having avg(sal)< 3000;
+
+9.WAQTD DEPTNO IF THERE ARE ATLEAST 3 EMP IN EACH DEPT WHOS NAME HAS CHAR 'A' OR 'S'.
+  select deptno
+  from emp
+  where ename like '%A%' OR ename like '%S%'
+  group by deptno
+  having count(*)>3;
+
+10.WAQTD MIN AND MAX SALARIES OF EACH JOB IF MIN SAL IS MORE THAN 1000 AND MAX SAL IS LESS THAN 5000.
+   select job, min(sal) as 'Minimum salary', max(sal) as 'Maximum salary'
+   from emp
+   group by job
+   having min(sal)>1000 AND max(sal)<5000;
