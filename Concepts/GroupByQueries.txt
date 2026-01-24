@@ -33,7 +33,7 @@
   where sal>2000
   group by deptno;
 
-7.WAQDTD TOTAL SALARY NEEDED TO PAY AND NUMBER OF SALESMEN IN EACH DEРТ.
+7.WAQTD TOTAL SALARY NEEDED TO PAY AND NUMBER OF SALESMEN IN EACH DEРТ.
   select sum(sal) as 'Total salary to pay', count(*) as 'No of salesmen', deptno
   from emp
   where job = 'salesman'
