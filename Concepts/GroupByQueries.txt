@@ -1,0 +1,52 @@
+1.WAQTD NUMBER OF EMPLOYEES WORKING IN EACH DEPARTEMENТ EXCЕРT PRESIDENT.
+  select count(*) as 'No.of.employees', deptno
+  from emp
+  where job not in ('president')
+  group by deptno;
+
+2.WAQTD TOTAL SALARY NEEDED TO PAY ALL THE EMPLOYEES IN EACH JOB.
+  select sum(sal) as 'Total salary to pay', job
+  from emp
+  group by job;
+
+3.WAQTD NUMBER OF EMPLOYEEES WORKING AS MANAGER IN EACH DEPARTMENT.
+  select count(*) as 'No of managers', deptno
+  from emp
+  where job = 'manager'
+  group by deptno;
+
+4.WAQTD AVG SALARY NEEDED TO PAY ALL THE EMPLOYEES IN EACH DEPARTMENT EXCLUDING THE EMPLOYEES OF DEPTNO 20.
+  select avg(sal) as 'Average salary', deptno
+  from emp
+  where deptno not in (20)
+  group by deptno;
+
+5.WAQTD NUMBER OF EMPLOYEES HAVING CHARACTER 'A' IN THEIR NAMES IN EACH JOВ.
+  select count(*) as 'No of employees having A',job
+  from emp
+  where ename like '%A%'
+  group by job;
+
+6.WAQTD NUMBER OF EMPLOYEES AND AVG SALARY NEEDED TO PAY THE EMPLOYEES WHO SALARY IN GREATER THAN 2000 IN EACH DEPT.
+  select count(*) as 'No of employees getting above 2000', avg(sal) as 'Average salary', deptno
+  from emp
+  where sal>2000
+  group by deptno;
+
+7.WAQDTD TOTAL SALARY NEEDED TO PAY AND NUMBER OF SALESMEN IN EACH DEРТ.
+  select sum(sal) as 'Total salary to pay', count(*) as 'No of salesmen', deptno
+  from emp
+  where job = 'salesman'
+  group by deptno;
+
+8.WAQTD NUMBER OF EMPLOYEES WITH THEIR MAXIMUM SALARIES IN EACH JOВ. (No expected output)
+  select count(*) as 'No of employees', max(sal) as 'Maximum salary', job
+  from emp
+  group by job;
+
+9.WAQTD MAXIMUM SALARIES GIVEN TO AN EMPLOYEE WORKING IN EACH DЕРТ.
+  select max(sal) as 'Maximum salary', deptno
+  from emp
+  group by deptno;
+
+10.WAQTD NUMBER OF TIMES THE SALARIES PRESENT IN EMPLOYEE TABLE.
