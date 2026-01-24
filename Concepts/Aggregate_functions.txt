@@ -56,9 +56,7 @@
    where ename like '%LL%';
 
 12.WAQTD NUMBER OF DEPARTMENTS PRESENT IN EMPLOYEE TABLE 
-   SELECT COUNT(DISTINCT DEPTNO) AS "No.of.departments"
-   FROM EMP
-   WHERE DEPTNO IS NOT NULL;
+   SELECT COUNT(DISTINCT DEPTNO) AS "No.of.departments" FROM emp;
 
 13.WAQTD NUMBER OF EMPLOYEES HAVING CHARACTER 'Z' IN THEIR NAMES
    select count(*) as 'Names having Z'
@@ -68,4 +66,30 @@
 14.WAQTD NUMBER OF EMPLOYEES HAVING '$' IN THEIR NAMES.
    select count(*) AS 'No.of_employees having A'
    from EMP
-   where ename like '%$%'
+   where ename like '%$%';
+
+15.WAQTD TOTAL SALARY GIVEN TO EMPLOYEES WORKING AS CLERK IN DEPТ 30
+   select sum(sal) as 'Total salary'
+   from emp
+   where job='clerk' AND deptno = 30;
+
+16.WAQTD MAXIMUM SALARY GIVEN TO THE EMPLOYEES WORKING AS ANALYST
+   select max(sal) as 'Maximum analyst salary'
+   from emp
+   where job = 'analyst';
+
+17.WAQTD NUMBER OF DISTINCT SALARIES PRESENT IN EMPLOYEE TABLE
+   select count(distinct sal) as 'Salaries given' from emp;
+
+18.WAQTD NUMBER OF JOBS PRESENT IN EMPLOYEE TABLE 
+   select count(distinct job) as 'No of jobs' from emp;
+
+19.WAQTD AVG SALARY GIVEN TO THE CLERK
+   select avg(sal) as 'Average clerk salary'
+   from emp
+   where job='clerk';
+
+20.WAQTD MINIMUM SALARY GIVEN TO THE EMPLOYEES WHO WORK IN DEPT 10 AS MANAGER OR A CLERK
+   select min(sal) as 'Minimum salary'
+   from emp 
+   where deptno = 10 and job in ('manager','clerk');
