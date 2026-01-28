@@ -1,0 +1,8 @@
+1. WAQTD NAMES OF THE EMPLOYEES EARNING MORE THAN SCOTT IN ACCOUNTING DEPT
+   select ename 
+   from emp
+   where sal > (
+        select sal 
+        from emp
+        where ename = 'SCOTT' and deptno in 
+   )
