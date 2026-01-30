@@ -1,0 +1,22 @@
+1.WAQTD 2ND MINIMUM SALARY
+  select max(sal)
+  from emp
+  where sal < (select max(sal) from emp);
+
+2.WAQTD 5TH MAXIMUM SALARY
+  select e1.sal 
+  from emp e1
+  where 4 in (
+      select count(distinct e2.sal)
+      from emp e2
+      where e1.sal < e2.sal
+  );
+
+3.WAQTD NAME OF THE EMPLOYEE EARNING 3RD MAXIMUM SALARY
+  select e1.ename 
+  from emp e1
+  where 2 in (
+      select count(distinct e2.sal)
+      from emp e2
+      where e1.sal < e2.sal
+  );
