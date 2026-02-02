@@ -1,0 +1,58 @@
+1.WAQTD NAMES OF THE EMPLOYEES EARNING MORE THAN SCOTT IN ACCOUNTING DEPT
+  select ename
+  from emp
+  where sal>(select sal from emp where ename = 'SCOTT') AND
+  deptno = (select deptno from dept where dname = 'ACCOUNTING');
+
+2.WAQTD DETAILS OF THE EMPLOYEES WORKING AS MANAGER IN THE LOCATION CHICAGO 
+   select * 
+   from emp
+   where job = 'MANAGER'
+   and deptno = (select deptno from dept where loc = 'CHICAGO');
+
+3.WAQTD NAME AND SAL OF THE EMPLOYEES EARNING MORE THAN KING IN THE DEPТ АССОUNTING
+  select ename, sal
+  from emp
+  where sal>(select sal from emp where ename = 'KING')
+  AND deptno = (select deptno from dept where dname = 'ACCOUNTING');
+
+4.WAQTD DETAILS OF THE EMPLOYEES WORKING AS SALESMAN IN THE DEPARTEMENT SALES
+  select *
+  from emp
+  where job = 'SALESMAN' and
+  deptno = (select deptno from dept where dname = 'SALES');
+
+5.WAQTD NAME, SAL, JOB, HIREDATE OF THE EMPLOYEES WORKING IN OPERATIONS DEPARTMENT AND HIRED BEFORE KING
+  select ename, sal, job, hiredate
+  from emp
+  where hiredate < (select hiredate from emp where ename = 'KING') and
+  deptno = (select deptno from dept where dname = 'OPERATIONS');
+
+6.DISPLAY ALL THE EMPLOYEES WHOSE DEPARTMENT NAMES ENDING 'S'.
+  select *
+  from emp
+  where deptno in (select deptno from dept where dname like '%S');
+
+7.WAQTD DNAME OF THE EMPLOYEES WHOSE NAMES HAS CHARACTER 'A' IN IT.
+  select dname
+  from dept
+  where deptno in (select deptno from emp where ename like '%A%');
+
+8.WAQTD DNAME AND LOC OF THE EMPLOYEES WHOSE SALARY IS RUPEES 800.
+  select dname, loc
+  from dept
+  where deptno in (select deptno from emp where sal = 800);
+
+9.WAQTD DNAME OF THE EMPLOYEES WHO EARN COMISSION
+  select dname
+  from dept
+  where deptno in (select deptno from emp where comm is not null);
+
+10.WAQTD LOC OF THE EMPLOYEES IF THEY EARN COMISSION IN DEPT 40
+   select loc
+   from dept
+   where deptno = 40 and deptno in (
+           select deptno
+           from emp
+           where comm is not null
+   );
