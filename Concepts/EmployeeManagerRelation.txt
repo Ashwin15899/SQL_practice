@@ -1,0 +1,98 @@
+1. WAQTD SMITH’S REPORTING MANAGER'S NAME
+  select ename
+  from emp
+  where empno in (select mgr
+        from emp
+        where ename = 'SMITH'
+  );
+
+2. WAQTD ADAMS MANAGER'S MANAGER NAME
+  select ename
+  from emp
+  where empno in (select mgr
+      from emp
+      where empno in (select mgr
+                 from emp
+                where ename = 'ADAMS'
+      )
+  );
+
+3. WAQTD DNAME OF JONES MANAGER
+  select dname
+  from dept
+         where deptno in (select deptno
+         from emp
+                  where empno in (select mgr
+                  from emp
+                  where ename = 'JONES'
+         )
+  );
+
+
+
+4. WAQTD MILLER'S MANAGER'S SALARY
+  select sal
+  from emp
+  where empno in (select mgr
+          from emp
+          where ename = 'MILLER'
+  );
+
+5. WAQTD LOC OF SMITH'S MANAGER'S MANAGER.
+  select loc
+  from dept
+  where deptno in (select deptno
+          from emp
+          where empno in (select mgr
+                 from emp
+                 where empno in (select mgr
+                         from emp
+                         where ename = 'SMITH'
+                  )
+           )
+  );
+
+6. WAQTD NAME OF THE EMPLOYEES REPORTING TО BLAKE
+   select ename
+   from emp
+   where mgr = (select empno
+         from emp
+         where ename = 'BLAKE'
+   );
+
+7. WAQTD NUMBER OF EMPLOYEES REPORTING TO KING
+   select count(*) AS ‘No.of.employees’
+   from emp
+   where mgr = (select empno
+         from emp
+         where ename = 'KING'
+   );
+
+8. WAQTD DETAILS OF THE EMPLOYEES REPORTING TO JONES
+   select *
+   from emp
+         where mgr in (select empno
+                   from emp
+                   where ename = 'JONES'
+   );
+
+9. WAQTD ENAMES OF THE EMPLOYEES REPORTING TO BLAKE'S MANAGER
+   select ename
+   from emp
+   where mgr = (select empno
+          from emp
+          where empno = (select mgr
+                     from emp
+                     where ename = 'BLAKE'
+          )
+   );
+
+10. WAQTD NUMBER OF EMPLOYEES REPORTING TO FORD'S MANAGER
+    select count(*) 
+    from emp
+    where mgr in (select empno
+          from emp
+          where empno = (select mgr
+                    from emp
+                    where ename = 'FORD'
+    ));
