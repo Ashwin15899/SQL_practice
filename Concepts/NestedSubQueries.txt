@@ -20,3 +20,69 @@
       from emp e2
       where e1.sal < e2.sal
   );
+
+4.WAQTD EMPNO OF THE EMPLOYEE EARNING 2D MAXIMUM SALARY
+  select e1.empno
+  from emp e1
+  where 1 in (select count(distinct e2.sal)
+           from emp e2 
+           where e1.sal<e2.sal
+  );
+
+5.WAQTD DEPARTMENT NAME OF AN EMPLOYEE GETTING 4TH MAX SAL
+  select dname
+  from dept
+  where deptno in (
+           select e1.deptno
+           from emp e1
+           where 3 in ( 
+                      select count(distinct e2.sal)
+                      from emp e2
+                      where e1.sal<e2.sal
+           )
+  );
+
+6.WAQTD DETAILS OF THE EMPLOYEE WHO WAS HIRED 2nd
+  select e1.*
+  from emp e1 
+  where 1 in (select count(distinct e2.hiredate)
+           from emp e2
+           where e1.hiredate>e2.hiredate
+  );
+
+7.WAQTD NAME OF THE EMPLOYEE HIRED BEFORE THE LAST EMPLOYEE
+  select e1.ename
+  from emp e1
+  where 1 in (select count(distinct e2.hiredate)
+            from emp e2
+            where e1.hiredate < e2.hiredate
+  );
+
+8.WAQTD LOC OF THE EMPLOYEE WHO WAS HIRED FIRST
+  select loc
+  from dept
+  where deptno in (select deptno e1
+           from emp e1
+           where hiredate = (select min(hiredate)
+                      from emp
+           )
+  );
+
+9.WAQTD DETAILS OF THE EMPLOYEE EARNING 7TH MINIMUM SALARY
+  select e.*
+  from emp e
+  where 6 in (select count(distinct e2.sal)
+             from emp e2
+            where e.sal> e2.sal
+  );
+
+
+10.WAQTD DNAME OF EMPLOYEE GETTING 2ND MAXIMUM SALARY
+   select dname
+   from dept
+   where deptno in (select e1.deptno
+            from emp e1
+            where 1 in (select count(distinct e2.sal)
+                   from emp e2
+                   where e1.sal < e2.sal
+));
