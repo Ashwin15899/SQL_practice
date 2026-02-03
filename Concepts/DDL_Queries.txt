@@ -1,0 +1,20 @@
+1. Create table emp-details with 5 columns using constraint (not null, unique and check), data type - number, varchar2, date
+   create table empdetails (
+       eid number(5) primary key,
+       ename varchar(30) not null,
+       contact number(10) unique not null check(length(contact)=10),
+       salary number(10) not null,
+       hiredate date default sysdate not null
+   );
+
+2. Add column in table as deptno
+   alter table empdetails
+   add deptno number(5) not null;
+
+3. Rename column hiredate to date_of_joining
+   alter table empdetails
+   rename column hiredate to date_of_joining;
+
+4. Delete column named test.
+   alter table empdetails
+   drop column test;
