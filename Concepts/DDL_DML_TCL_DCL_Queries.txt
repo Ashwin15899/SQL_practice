@@ -1,0 +1,49 @@
+DDL
+1. Create table emp-details with 5 columns using constraint (not null, unique and check), data type - number, varchar2, date
+   create table empdetails (
+       eid number(5) primary key,
+       ename varchar(30) not null,
+       contact number(10) unique not null check(length(contact)=10),
+       salary number(10) not null,
+       hiredate date default sysdate not null
+   );
+
+2. Add column in table as deptno
+   alter table empdetails
+   add deptno number(5) not null;
+
+3. Rename column hiredate to date_of_joining
+   alter table empdetails
+   rename column hiredate to date_of_joining;
+
+4. Delete column named test.
+   alter table empdetails
+   drop column test;
+
+5. Delete column named test.
+   alter table empdetails
+   drop column test;
+
+6. Change data type and size of column ename
+   alter table empdetails
+   modify ename varchar(25);
+
+7. Drop table named test.
+   drop table test;
+=====================================================================================================
+DML
+1. Insert records in the table empinfo
+   INSERT into empinfo values (001, 'Ashwin', 8248664879, 50000.00, '03-SEP-2025', 2);
+   INSERT into empinfo values (002, 'Balaji', 9876598782, 50000.00, '03-SEP-2025', 2);
+   INSERT into empinfo values (003, 'Rameez',9877823421, 50000.00, '03-SEP-2025', 2);
+
+2. Update salary of all employees by 1000
+   UPDATE empinfo set salary = 51000;
+
+3. Update deptno=3 who is having lowest salary
+   UPDATE empinfo set deptno = 3 where salary = (select min(salary) from empinfo);
+
+4. Delete records from the table who works in dept 3
+   DELETE from empinfo where deptno = 3;
+=====================================================================================================
+
