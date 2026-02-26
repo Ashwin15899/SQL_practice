@@ -1,0 +1,203 @@
+NOTE: INS_FLAG          ---    Insurance flag yes or no
+	      PRIM_FLAG     -  Primary account or not
+	      FETCH_FLAG  �-- SMS message fetched or not
+
+1. CARD_MASTER
+Table Structure
+CREATE TABLE CARD_MASTER (
+��� CARD_NO���� VARCHAR2(20),
+��� CARD_STATUS VARCHAR2(20),
+��� EXPIRY_DATE DATE,
+��� FROM_DATE�� DATE,
+��� CIN�������� VARCHAR2(20),
+��� INS_FLAG��� CHAR(1)
+);
+
+Sample Values
+CARD_NO
+CARD_STATUS
+EXPIRY_DATE
+FROM_DATE
+CIN
+INS_FLAG
+4111111111111111
+ACTIVE
+20281231
+20240101
+CIN1001
+Y
+5222222222222222
+ACTIVE
+20290630
+20230701
+CIN1002
+N
+5333333333333333
+BLOCKED
+20270331
+20220215
+CIN1003
+N
+
+2. CARD_ACCOUNT_MASTER
+CREATE TABLE CARD_ACCOUNT_MASTER (
+    CARD_ACCT���VARCHAR2(20),
+��� CIN����VARCHAR2(20),
+��� CARD_ACCT_BAL��� NUMBER(14,2),
+��� CARD_ACCT_STATUS VARCHAR2(20)
+);
+Sample Values
+CARD_ACCT
+CIN
+CARD_ACCT_BAL
+CARD_ACCT_STATUS
+ACCT2001
+CIN1001
+25340.75
+ACTIVE
+ACCT2002
+CIN1002
+5400.00
+ACTIVE
+ACCT2003
+CIN1003
+12300.50
+BLOCKED
+
+3. CUSTOMER_MASTER
+Table Structure
+CREATE TABLE CUSTOMER_MASTER (
+��� CIN��������� VARCHAR2(20),
+��� FNAME������� VARCHAR2(50),
+��� LNAME������� VARCHAR2(50),
+��� MOBNO������� VARCHAR2(15),
+��� EMAIL������� VARCHAR2(100),
+��� DOB��������� DATE,
+��� CUSTOMER_ID� VARCHAR2(30)
+);
+Sample Values
+CIN
+FNAME
+LNAME
+MOBNO
+EMAIL
+DOB
+CUSTOMER_ID
+CIN1001
+Arun
+Kumar
+9876543210
+arun.k@example.com
+1990-05-12
+CUST001
+CIN1002
+Priya
+Sharma
+9123456780
+priya.s@example.com
+1992-01-20
+CUST002
+CIN1003
+Rahul
+Menon
+7011122233
+rahul.m@example.com
+1987-03-25
+CUST003
+
+4. CARDACCOUNT_CARD_LINK
+Table Structure
+CREATE TABLE CARDACCOUNT_CARD_LINK (
+��� CARD_NO��������� VARCHAR2(20),
+��� CARD_ACCT������� VARCHAR2(20),
+��� CIN������������� VARCHAR2(20),
+��� CARD_ACCT_STATUS VARCHAR2(20),
+��� PRIM_FLAG������� CHAR(1)
+);
+Sample Values
+CARD_NO
+CARD_ACCT
+CIN
+CARD_ACCT_STATUS
+PRIM_FLAG
+4111111111111111
+ACCT2001
+CIN1001
+ACTIVE
+Y
+4111111111111111
+ACCT2002
+CIN1001
+ACTIVE
+N
+5222222222222222
+ACCT2002
+CIN1002
+ACTIVE
+Y
+
+5. SMS_OUT
+Table Structure
+CREATE TABLE SMS_OUT (
+��� CARD_NO���� VARCHAR2(20),
+��� MOB_NO����� VARCHAR2(15),
+��� EMAIL������ VARCHAR2(100),
+��� FETCH_FLAG� CHAR(1),
+��� MSG_DATE��� DATE
+);
+Sample Values
+CARD_NO
+MOB_NO
+EMAIL
+FETCH_FLAG
+MSG_DATE
+4111111111111111
+9876543210
+arun.k@example.com
+N
+20260220
+5222222222222222
+9123456780
+priya.s@example.com
+Y
+20260222
+NULL
+7011122233
+rahul.m@example.com
+N
+20260223
+
+Questions
+1. Write a PL/SQL function that checks whether a card number is valid based on:
+It must be exactly 16 characters.
+It must exist in CARD_MASTER.
+
+2. Write a procedure that validates a transaction using these rules:
+Validate card: 
+Card must exist in CARD_MASTER.
+Status must be 'ACTIVE'.
+Not expired on SYSDATE.
+Validate account: 
+Find the primary account (PRIM_FLAG='Y') via CARDACCOUNT_CARD_LINK.
+The linked account must exist in CARD_ACCOUNT_MASTER and have status 'ACTIVE'.
+
+3. Create a procedure that validates:
+The card exists.
+card_status must be 'ACTIVE'.
+expiry_date must be on or after current date.
+
+
+4. Print customer name and total balance across ACTIVE accounts.
+
+5. Create Trigger for inserting details into temporary table when any insert, update or delete operation in Customer_Master table.
+
+6. Get Active Cards with Primary Account Details use JOIN & Cursor FOR loop and print each active card's number, holder name, primary account number, and account balance.
+
+7. Create a function get_primary_acct(p_card_no) that returns the primary account for a card.  Raise an application error if not found.
+
+8. Create a procedure expiry_sms(p_within_days) to insert rows into SMS_OUT for cards expiring within N days.
+
+9. A card link row must have cin matching the card's cin. Create a BEFORE INSERT OR UPDATE trigger of card_no, cin on CARDACCOUNT_CARD_LINK to implement this.
+
+10. Accept a comma-separated CIN list and set all their cards to INACTIVE using dynamic SQL with bind variables.
+
